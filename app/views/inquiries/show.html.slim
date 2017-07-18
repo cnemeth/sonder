@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Rental site:
+  = @inquiry.rental_site
+p
+  strong Total price:
+  = @inquiry.total_price
+p
+  strong Total tax:
+  = @inquiry.total_tax
+p
+  strong Unit:
+  = @inquiry.unit
+
+= link_to 'Edit', edit_inquiry_path(@inquiry)
+'  |
+= link_to 'Back', inquiries_path

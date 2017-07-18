@@ -1,0 +1,10 @@
+= semantic_form_for @inquiry do |f|
+  = f.semantic_errors :state
+  = f.inputs do
+    = f.input :rental_site, label: 'Rental site'
+    = f.input :unit, label: 'Unit ad name', as: :select, collection: Hash[Unit.all.map{|unit| [unit.ad_name, unit.id]}], include_blank: '... select from list ...'
+    = f.input :total_price, label: 'Total price', as: :string, :input_html => { :readonly => true }
+    = f.input :total_tax, label: 'Total tax', as: :string, :input_html => { :readonly => true }
+
+  = f.actions do
+    = f.action :submit, as: :input, button_html: {class: 'btn btn-primary btn-lg'}

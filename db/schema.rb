@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516035133) do
+ActiveRecord::Schema.define(version: 20170718135226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20170516035133) do
     t.index ["unit_id"], name: "index_day_prices_on_unit_id"
   end
 
+  create_table "inquiries", force: :cascade do |t|
+    t.string "rental_site"
+    t.decimal "total_price", precision: 8, scale: 2
+    t.decimal "total_tax", precision: 8, scale: 2
+    t.bigint "unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_inquiries_on_unit_id"
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "ad_name"
     t.decimal "tax_percent", precision: 8, scale: 2
@@ -32,4 +42,5 @@ ActiveRecord::Schema.define(version: 20170516035133) do
   end
 
   add_foreign_key "day_prices", "units"
+  add_foreign_key "inquiries", "units"
 end
