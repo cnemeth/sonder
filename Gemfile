@@ -51,6 +51,7 @@ group :development, :test do
 
   gem 'database_cleaner'
   gem 'poltergeist'
+  gem 'railroady'
 end
 
 group :development do
